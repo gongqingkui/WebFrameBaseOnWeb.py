@@ -1,7 +1,9 @@
 # encoding: utf-8
 import web,os,sqlite3,time
 from web import form
+#templete floder
 render = web.template.render('templates/')
+#url tables
 urls = ('/', 'viewPost',
     '/newPost', 'newPost',
     '/new', 'new',
@@ -10,19 +12,24 @@ urls = ('/', 'viewPost',
     '/edit', 'edit',
     '/viewPost', 'viewPost')
 
-
+#get or post -> function
 class delete:
+    #GET function
     def GET(self):
+        # url eg. http://192.168.1.3:1234/delete?id=1
         i = web.input(id=None)
-        print i.id
+        #db
         sdb = sqldb()
         sdb.cu.execute('delete from msgs where id = ?', i.id)
         sdb.conn.commit()
+        #go to /viewPost page
         return web.seeother('/viewPost')
 
 
 class edit:
+    #POST function
     def POST(self):
+        #the form is i
         i = web.input()
         date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
         sdb = sqldb()
