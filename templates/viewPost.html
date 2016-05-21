@@ -1,0 +1,7 @@
+$def with(dbre)
+<h1>simple message board</h1>
+<ul>
+$for r in dbre
+    <li>[<a href="/delete?id=$r[0]">X</a>][<a href="/editPost?id=$r[0]">E</a>]<em>$r[1] $r[2] say:</em><p>$r[3]</p></li>
+</ul>
+<a href="/newPost">NewPost</a>

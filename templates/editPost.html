@@ -1,0 +1,10 @@
+$def with(dbre)
+<h1>simple message board</h1>
+$if dbre:
+    <form method="post" action='/edit'>
+    <input type="hidden" name="id" value="$dbre[0][0]">
+    Name:<input type="text" name="name" value="$dbre[0][1]"/>
+    <br/>Content:<textarea name="content" rows="3" cols="30">$dbre[0][3]</textarea>
+    <br/><input type="submit"/></form>
+$else:
+    <em>Error</em>
